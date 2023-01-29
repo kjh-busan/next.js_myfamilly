@@ -6,9 +6,7 @@ export default function Hero() {
         <>
             <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-            우리가족 추억을 기억하며
-                <br className="hidden lg:inline-block"/>
-                어머니를 떠나보내며..
+            어머니를 떠나보내며 우리가족을 추억하다.
             </h1>
             <p className="mb-8 leading-relaxed">
             2023년 1월 11일 오전9시쯤, 일본에서 지내다가 문득 어머니께 안부 전화를 해봤다. [여보세요]조차 말할 수 없을 지경에 이른 사실을 그때 확인했다. 아버지는 위독하다는 말을 했다. 바로 16일행 티켓을 예매했다. 그러나 몇시간 뒤 어머니 장례식장으로 이동중이라는 연락을 받았다. 그렇게 허망하게 어머니를 떠나보냈다. 그 이후 선산집에서 우리 가족들을 추억하며...
