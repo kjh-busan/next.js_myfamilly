@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SocialIcon } from 'react-social-icons'
 
 export default function Footer(){
     return (
@@ -18,6 +19,11 @@ export default function Footer(){
                         <a href="https://twitter.com/@picsmash7" rel="noopener noreferrer" className="text-gray-600 ml-1" target="_blank">@picsmash</a>
                     </p>
                     <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+
+                <SocialIcon url="https://www.facebook.com/picsmash" />
+                <SocialIcon url="https://twitter.com/@picsmash7" />
+                <SocialIcon url="https://www.youtube.com/picsmash" />
+                <SocialIcon url="https://steemit.com/@picsmash" />
 
                     </span>
                     </div>
