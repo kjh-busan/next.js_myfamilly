@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { SocialIcon } from 'react-social-icons'
 
 export default function Footer(){
     return (
@@ -15,15 +14,10 @@ export default function Footer(){
                         </a>
                     </Link>
 
-                    <p className="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">© 2023 아들 김주환 제작 —
+                    <p className="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">© 2023 아들 우측 전신 편마비의 다발성 경화증 환자 김주환 제작 —
                         <a href="https://twitter.com/@picsmash7" rel="noopener noreferrer" className="text-gray-600 ml-1" target="_blank">@picsmash</a>
                     </p>
                     <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-
-                <SocialIcon url="https://www.facebook.com/picsmash" />
-                <SocialIcon url="https://twitter.com/@picsmash7" />
-                <SocialIcon url="https://www.youtube.com/picsmash" />
-                <SocialIcon url="https://steemit.com/@picsmash" />
 
                     </span>
                     </div>
