@@ -1,31 +1,42 @@
 import Image from "next/image";
 
 export default function ProjectItem({data}){
-
     const title = data.properties.Name.title[0].plain_text
-    const github = data.properties.Github.url
-    const youtube = data.properties.Youtube.url
-    const description = data.properties.Description.rich_text[0].plain_text
+    const description = data.properties.description.rich_text[0].plain_text
     const imgSrc = data.cover.file?.url || data.cover.external.url
     const tags = data.properties.Tags.multi_select
-    const start = data.properties.WorkPeriod.date.start
-    const end = data.properties.WorkPeriod.date.end
+    const lifeperiodStart = data.properties.lifeperiod.date.start
+    const lifeperiodEnd = data.properties.lifeperiod.date.end === null ? "현재" : data.properties.lifeperiod.date.end
+    const relationship = data.properties.relationship.checkbox == true ? "관계좋음" : "관계회복 노력중"
 
-    const calculatedPeriod = (start, end) => {
-        const startDateStringArray = start.split('-');
-        const endDateStringArray = end.split('-');
+    const calculatedPeriod = (lifeperiodStart, lifeperiodEnd) => {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = ('0' + (date.getMonth() + 1)).slice(-2);
+        const day = ('0' + date.getDate()).slice(-2);
+        const dateStr = year + '-' + month + '-' + day;
+
+        const endToday = dateStr.split('-');
+
+
+        // const startDateStringArray = lifeperiodStart.substr(0,4)
+        // const endDateStringArray = lifeperiodEnd == "현재" ? todayDate.getFullYear() : lifeperiodEnd.substr(0,4)
+        const startDateStringArray = lifeperiodStart.split('-')
+        const endDateStringArray = lifeperiodEnd == "현재" ? endToday : lifeperiodEnd.split('-');
 
         var startDate = new Date(startDateStringArray[0], startDateStringArray[1], startDateStringArray[2]);
         var endDate = new Date(endDateStringArray[0], endDateStringArray[1], endDateStringArray[2]);
 
-        console.log(`startDate: ${startDate}`)
-        console.log(`endDate: ${endDate}`)
+        console.log(`lifeperiodEnd: ${lifeperiodEnd}`)
+        console.log(`startDate: ${startDateStringArray}`)
+        console.log(`endDate: ${endDateStringArray}`)
 
+        // const result = Math.abs(endDateStringArray - startDateStringArray);
         const diffInMs = Math.abs(endDate - startDate);
-        const result = diffInMs / (1000 * 60 * 60 * 24);
-
+        const result = diffInMs / (1000 * 60 * 60 * 24) / 365;
+        
         console.log(`기간 : ${result}`)
-        return result;
+        return Math.floor(result);
     };
 
     return (
@@ -34,8 +45,8 @@ export default function ProjectItem({data}){
                 className="rounded-t-xl"
                 src={imgSrc}
                 alt="cover image"
-                width="100%"
-                height="50%"
+                width="100"
+                height="100"
                 layout="responsive"
                 objectFit="cover"
                 quality={100}
@@ -43,12 +54,10 @@ export default function ProjectItem({data}){
 
             <div className="p-4 flex flex-col">
                 <h1 className="text-2xl font-bold">{title}</h1>
+                <h4 className="mt-4 text-xl">{lifeperiodStart} ~ {lifeperiodEnd} (만{calculatedPeriod(lifeperiodStart, lifeperiodEnd)}세)</h4>
                 <h3 className="mt-4 text-xl">{description}</h3>
-                <a href={github}>깃허브 바로가기</a>
-                <a href={youtube}>유튜브 시연영상 보러가기</a>
-                <p className="my-1 ">
-                    작업기간 : {start} ~ {end} ({calculatedPeriod(start, end)}일)
-                </p>
+                <h4 className="mt-4 text-xl">농담가능 여부 : {relationship}</h4>
+
                 <div className="flex items-start mt-2">
                     {tags.map((aTag) => (
                         <h1 className="px-2 py-1 mr-2 rounded-md bg-sky-200 dark:bg-sky-700 w-30" key={aTag.id}>{aTag.name}</h1>

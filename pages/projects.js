@@ -11,13 +11,13 @@ export default function Projects({projects}) {
         <Layout >
             <div className="flex flex-col items-center justify-center min-h-screen px-3 mb-10">
                 <Head>
-                    <title>빡코딩 포트폴리오</title>
+                    <title>김상원 가족들의 추억</title>
                     <meta name="description" content="오늘도 빡코딩!" />
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <h1 className="text-4xl font-bold sm:text-6xl">
-                    총 프로젝트 :
-                    <span className="pl-4 text-blue-500">{projects.results.length}</span>
+                업데이트된 총 구성원 :
+                    <span className="pl-4 text-blue-500">{projects.results.length}명</span>
                 </h1>
 
                 <div className="grid grid-cols-1 gap-8 p-12 m-4 md:grid-cols-2">
@@ -47,7 +47,7 @@ export async function getServerSideProps() {
         body: JSON.stringify({
             sorts: [
                 {
-                    "property": "Name",
+                    "property": "lifeperiod",
                     "direction": "ascending"
                 }
             ],
