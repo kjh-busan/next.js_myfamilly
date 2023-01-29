@@ -20,10 +20,10 @@ export default function Header(){
                     <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
                         
                         <Link href="/" className="mr-5 hover:text-gray-900">
-                            홈으로
+                            홈으로__
                         </Link>
                         <Link href="/projects" className="mr-5 hover:text-gray-900">
-                            추억보기
+                            추억보기__
                         </Link>
                         <a href="https://open.kakao.com/o/sAY1Vb1e" className="mr-5 hover:text-gray-900">
                             카톡하기
