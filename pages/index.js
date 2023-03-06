@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <Layout>
         <Head>
-            <title>김상원 가족들의 추억</title>
-            <meta name="description" content="2023년 선산 서낭데이 김상원 가족들" />
+            <title>우리가족들의 추억</title>
+            <meta name="description" content="2023년 선산 서낭데이 우리가족들" />
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
