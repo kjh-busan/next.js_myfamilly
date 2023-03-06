@@ -36,38 +36,36 @@ export default function Projects({projects}) {
 // 각 요청 때마다 호출
 export async function getServerSideProps() {
 
-    const options = {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Notion-Version': '2022-02-22',
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${TOKEN}`
-        },
-        body: JSON.stringify({
-            sorts: [
-                {
-                    "property": "lifeperiod",
-                    "direction": "ascending"
-                }
-            ],
-            page_size: 100
-        })
-      };
+	const options = {
+		method: 'POST',
+		headers: {
+			Accept: 'application/json',
+			'Notion-Version': '2022-02-22',
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${TOKEN}`
+		},
+		body: JSON.stringify({
+			sorts: [
+				{
+					"property": "lifeperiod",
+					"direction": "ascending"
+				}
+			],
+			page_size: 100
+		})
+	};
 
-    const res = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, options)
+	const res = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, options);
+	const projects = await res.json();
+	const projectNames = projects.results.map((aProject) =>(
+		aProject.properties.Name.title[0].plain_text
+	))
 
-    const projects = await res.json()
+	console.log(`projectNames : ${projectNames}`);
 
-    const projectNames = projects.results.map((aProject) =>(
-        aProject.properties.Name.title[0].plain_text
-    ))
-
-    console.log(`projectNames : ${projectNames}`);
-
-    return {
-      props: {projects}, // will be passed to the page component as props
-      // getStaticProps() 메소드를 사용한다면 revalidate 로 데이터 변경시 갱신가능!
-      // revalidate: 1 // 데이터 변경이 있으면 갱신 1초 마다
-    }
+	return {
+		props: {projects}, // will be passed to the page component as props
+		// getStaticProps() 메소드를 사용한다면 revalidate 로 데이터 변경시 갱신가능!
+		// revalidate: 1 // 데이터 변경이 있으면 갱신 1초 마다
+	}
 }
