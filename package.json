@@ -19,7 +19,7 @@
   "devDependencies": {
     "eslint": "8.17.0",
     "eslint-config-next": "12.1.6",
-    "tailwindcss": "^3.0.24"
+    "tailwindcss": "^3.2.7"
   },
   "main": "index.js",
   "repository": "https://github.com/kjh-busan/next.js_myfamilly.git",
